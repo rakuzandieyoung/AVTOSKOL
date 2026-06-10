@@ -22,7 +22,14 @@
         <a href="#home">Главная</a>
         <a href="#services">Услуги</a>
         <a href="#catalog">Каталог</a>
+
         <a href="#contacts">Контакты</a>
+
+        <a href="#" id="openCart" class="cart-link">
+            🛒 Корзина
+        <span id="cartCount">0</span>
+    </a>
+
     </nav>
 </header>
 
@@ -119,35 +126,127 @@
 <section id="catalog">
     <h2>Каталог товаров</h2>
 
+    <input
+    type="text"
+    id="searchInput"
+    placeholder="🔍 Поиск товара..."
+>
+
+<select id="sortSelect">
+    <option value="">Сортировка</option>
+    <option value="cheap">Сначала дешёвые</option>
+    <option value="expensive">Сначала дорогие</option>
+</select>
+
     <div class="cards">
 
-        <div class="card">
+        <div class="card product-card" data-price="35000">
             <img src="images/seat-covers.jpg" alt="Чехлы на сиденья">
             <h3>Чехлы на сиденья</h3>
             <p>от 35 000 ₸</p>
+
+            <button
+                class="cart-btn"
+                onclick="addToCart('Чехлы на сиденья',35000)">
+                Добавить в корзину
+            </button>
+
         </div>
 
-        <div class="card">
+        <div class="card product-card" data-price="20000">
              <img src="images/mats.jpg" alt="Автоковрики">
 
             <h3>Автоковрики</h3>
             <p>от 20 000 ₸</p>
+
+            
+            <button
+                class="cart-btn"
+                onclick="addToCart('Автоковрики',20000)">
+                Добавить в корзину
+            </button>
+
+
         </div>
 
-        <div class="card">
+        <div class="card product-card" data-price="15000">
             <img src="images/charger.jpg" alt="Зарядные устройства">
             <h3>Зарядные устройства</h3>
             <p>от 15 000 ₸</p>
+                        
+            <button
+                class="cart-btn"
+                onclick="addToCart('Зарядные устройства',15000)">
+                Добавить в корзину
+            </button>
+
         </div>
 
-        <div class="card">
+        <div class="card product-card" data-price="1500">
             <img src="images/key-cover.jpg" alt="Чехлы на ключи">
             <h3>Чехлы на ключи</h3>
             <p>от 1 500 ₸</p>
+                        
+            <button
+                class="cart-btn"
+                onclick="addToCart('Чехлы на ключи',1500)">
+                Добавить в корзину
+            </button>
+
         </div>
 
     </div>
 </section>
+
+<div id="cartModal" class="cart-modal">
+
+    <div class="form-wrapper cart-wrapper">
+
+        <span id="closeCart">✖</span>
+
+        <h2>Корзина</h2>
+
+        <div id="cartItems">
+            Корзина пуста
+        </div>
+
+        <br>
+
+        <h3 id="cartTotal">
+            Итого: 0 ₸
+        </h3>
+
+        <div class="checkout-form">
+
+            <input
+                type="text"
+                id="checkoutName"
+                placeholder="Ваше имя">
+
+            <input
+                type="tel"
+                id="checkoutPhone"
+                placeholder="Номер телефона">
+
+            <textarea
+                id="checkoutComment"
+                placeholder="Комментарий к заказу"></textarea>
+
+        </div>
+
+        <br>
+
+        <button id="checkoutBtn">
+            Оформить заказ
+        </button>
+
+        <button id="clearCartBtn">
+            Очистить корзину
+        </button>
+
+    </div>
+
+</div>
 
 <section id="reviews">
 
@@ -349,6 +448,8 @@
 </footer>
 
 <script src="script.js"></script>
+
+<div id="toast"></div>
 
 </body>
 </html>
